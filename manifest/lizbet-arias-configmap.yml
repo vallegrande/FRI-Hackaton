@@ -1,0 +1,24 @@
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: lizbet-arias-configmap
+#data:
+#  app-config: "activo"
+#  db-host: r2dbc:postgresql://ep-aged-lake-a4wjkmtd-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+#  db-port: QVMyMjJCRF9vd25lcg== 
+#  api-key: OVJyaVZ5UDdjV1pH
+#  feature-x-enabled: "true"
+
+# kubectl apply -f lizbet-arias-configmap.yml 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-map
+data:
+  app-config: "activo"
+  feature-x-enabled: "true"
+  DATABASE_URL: "r2dbc:postgresql://ep-aged-lake-a4wjkmtd-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+  DATABASE_USERNAME: "neondb_owner"
+  DATABASE_PASSWORD: "GQaLu2oDSTR6"
+

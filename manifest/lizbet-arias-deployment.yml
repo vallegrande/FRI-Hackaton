@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lizbet-arias-deployment
+  namespace: lizbet-arias-namespace
+spec:
+  replicas: 2  # Número de réplicas (puedes aumentar si es necesario)
+  selector:
+    matchLabels:
+      app: prs1 
+  template:
+    metadata:
+      labels:
+        app: prs1  
+    spec:
+      containers:
+      - name: backend-lizbet-arias-service  # Nombre del contenedor
+        image: lizbet/prs1back  # Imagen Docker del contenedor
+        ports:
+        - containerPort: 8080  # Puerto en el contenedor donde escucha la aplicación
+        resources:
+          requests:
+            memory: "256Mi"  # Memoria mínima solicitada
+            cpu: "250m"      # CPU mínima solicitada
+          limits:
+            memory: "512Mi"  # Memoria máxima permitida
+            cpu: "500m"      # CPU máxima permitida
+
+      - name: frontend-lizbet-arias-service  # Nombre del contenedor frontend
+        image: lizbet/prs1front  # Imagen Docker del contenedor frontend
+        ports:
+        - containerPort: 4200  # Puerto en el contenedor donde escucha la aplicación
+        resources:
+          requests:
+            memory: "256Mi"  # Memoria mínima solicitada
+            cpu: "250m"      # CPU mínima solicitada
+          limits:
+            memory: "512Mi"  # Memoria máxima permitida
+            cpu: "500m"      # CPU máxima permitida
+
+# kubectl apply -f lizbet-arias-deployment.yml 
